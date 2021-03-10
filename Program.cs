@@ -6,7 +6,10 @@ namespace GymBokingSys
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+           
+            Interface NewInterface = new Interface();
+            NewInterface.welcomeMessage();
+
         }
     }
 }
