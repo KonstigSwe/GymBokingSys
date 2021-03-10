@@ -14,9 +14,7 @@ namespace GymBokingSys
         }
         public void ShowSchedule()
         {
-            foreach (Schedule i in Schedule.ScheduleList)
-                if (i.employeename ==  _name )
-                Console.WriteLine($"{i._bookedBy} , {i._duration} , {i._timeBooked} ");
+            
         }
     }
 }

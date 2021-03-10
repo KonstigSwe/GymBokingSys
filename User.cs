@@ -4,14 +4,20 @@ using System.Text;
 
 namespace GymBokingSys
 {
-    class User:Person
-    { public User(int phoneNumber,string name,string password):base(phoneNumber, name, password)
+    public class User : Person
+    {
+        public User(int phoneNumber, string name, string password) : base(phoneNumber, name, password)
         {
 
         }
-        public void ShowMyBookings()
+        public User() : base()
         {
 
         }
     }
+    //public void ShowMyBookings()
+    // {
+
+    // }
 }
+
