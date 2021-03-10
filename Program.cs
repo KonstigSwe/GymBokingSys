@@ -6,8 +6,11 @@ namespace GymBokingSys
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello Bokking");
-            Console.WriteLine("testing");
+
+           
+            Interface NewInterface = new Interface();
+            NewInterface.welcomeMessage();
+
         }
     }
 }
