@@ -7,7 +7,7 @@ namespace GymBokingSys
     class Person
     {
         private int _phoneNumber { get; set; }
-        private string _name { get; set; }
+        public string _name { get; private set; }
         private string _password { get; set; }
         public Person(int phoneNumber,string name,string password)
         {
