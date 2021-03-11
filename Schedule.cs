@@ -6,8 +6,9 @@ namespace GymBokingSys
 {
     class Schedule
     {
-        public Activity activity;
+        public Activity Activity;
         public List<TimeSlot> slots = new List<TimeSlot>();
+
         private int[] ts1 = { 8, 0 };
         private int[] ts2 = { 9, 0 };
         private int[] ts3 = { 10, 0 };
@@ -21,13 +22,14 @@ namespace GymBokingSys
 
         public Schedule(Activity activity)
         {
-            this.activity = activity;
+            this.Activity = activity;
             this.slots = new List<TimeSlot>();
         }
 
         public void NewScheduleDefault(Activity activity)
         {
-            this.activity = activity;
+            this.slots.Clear();
+            this.Activity = activity;
             this.slots.Add(new TimeSlot(true, this.ts1, this.dur));
             this.slots.Add(new TimeSlot(true, this.ts2, this.dur));
             this.slots.Add(new TimeSlot(true, this.ts3, this.dur));
@@ -46,7 +48,14 @@ namespace GymBokingSys
         {
             this.slots.RemoveAt(index - 1);
         }
+        public void SaveSchedule()
+        {
 
+        }
+        public void ReadSchedule()
+        {
+
+        }
     }
     class TimeSlot
     {
@@ -62,7 +71,7 @@ namespace GymBokingSys
         public TimeSlot()
         {
             this._available = true;
-            this._startTime = new int[] { 8, 0};
+            this._startTime = new int[] { 8, 0}; // Hours, minutes
             this._duration  = new int[]{ 0, 0 }; // Hours, minutes
         }
     }
