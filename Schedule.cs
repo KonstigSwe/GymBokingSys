@@ -110,7 +110,7 @@ namespace GymBokingSys
         public TimeSlot()
         {
             this._available = true;
-            this._startTime = new int[] { 8, 0}; // Hours, minutes
+            this._startTime = new int[] { 8, 0};  // Hours, minutes
             this._duration  = new int[] { 0, 0 }; // Hours, minutes
         }
     }
