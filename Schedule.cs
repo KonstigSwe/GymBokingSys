@@ -8,6 +8,11 @@ namespace GymBokingSys
     {
         public Activity _activity;
         public List<TimeSlot> _slots = new List<TimeSlot>();
+
+        public void AddSlot() 
+        { 
+
+        }
     }
     class TimeSlot
     {
@@ -24,7 +29,7 @@ namespace GymBokingSys
         {
             this._available = true;
             this._startTime = DateTime.Now;
-            this._duration  = new int[]{ 0, 0 };
+            this._duration  = new int[]{ 0, 0 }; // Hours, minutes
         }
     }
 }
