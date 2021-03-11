@@ -56,6 +56,10 @@ namespace GymBokingSys
         {
 
         }
+        public void ShowSchedule()
+        {
+
+        }
     }
     class TimeSlot
     {
