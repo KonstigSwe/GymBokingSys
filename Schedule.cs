@@ -28,7 +28,7 @@ namespace GymBokingSys
         public void NewScheduleDefault(Activity activity)
         {
             this.activity = activity;
-            this.slots.Add(new TimeSlot(true, this.ts1,  this.dur));
+            this.slots.Add(new TimeSlot(true, this.ts1, this.dur));
             this.slots.Add(new TimeSlot(true, this.ts2, this.dur));
             this.slots.Add(new TimeSlot(true, this.ts3, this.dur));
             this.slots.Add(new TimeSlot(true, this.ts4, this.dur));
@@ -42,6 +42,10 @@ namespace GymBokingSys
         {
             this.activity = activity;
             this.slots.Add(new TimeSlot(availability, startTime, duration));
+        }
+        public void RemoveSlot(int index) 
+        {
+            this.slots.RemoveAt(index - 1);
         }
 
     }
