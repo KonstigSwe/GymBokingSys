@@ -5,6 +5,7 @@ namespace GymBokingSys
 {
     class Program
     {
+        static int level;
         static List<User> UserList = new List<User>();
         static void Main(string[] args)
         {
@@ -14,12 +15,12 @@ namespace GymBokingSys
             NewInterface.welcomeMessage();
             
             
-            LoginAndReg();
+             level = LoginAndReg();
 
         }
         static void XMLreader()
         {
-            //@".\Users.xml"
+            
             System.Xml.Serialization.XmlSerializer reader =
            new System.Xml.Serialization.XmlSerializer(typeof(List<User>));
             System.IO.StreamReader file = new System.IO.StreamReader(@"C:.\Users.xml");
@@ -44,13 +45,42 @@ namespace GymBokingSys
 
 
         }
+        static void AddAdmin()
+        {
+            if (level == 10)
+            {
+                Console.WriteLine("Enter your username:");
+                var username = Console.ReadLine();
+                Console.WriteLine("Enter your password:");
+                var password = Console.ReadLine();
+                Console.WriteLine("Enter your PhoneNumber:");
+                string phoneNumber = Console.ReadLine();
+                User us = new User(phoneNumber, username, password, Role.Admin);
+                UserList.Add(us);
+                XMLwriter();
+            }
+        }
+        static void AddEmployee()
+        {
+            if (level == 10)
+            {
+                Console.WriteLine("Enter your username:");
+                var username = Console.ReadLine();
+                Console.WriteLine("Enter your password:");
+                var password = Console.ReadLine();
+                Console.WriteLine("Enter your PhoneNumber:");
+                string phoneNumber = Console.ReadLine();
+                User us = new User(phoneNumber, username, password, Role.Employee);
+                UserList.Add(us);
+                XMLwriter();
+            }
+        }
         static int LoginAndReg()
         {
 
             int run = 1;
             // Admin och anställda bör också lagras på fil
-            string admn = "admin";
-            string empl = "empl";
+            
             bool corect = false;
             while (run == 1)
             {
@@ -65,27 +95,20 @@ namespace GymBokingSys
                     var username = Console.ReadLine();
                     Console.WriteLine("Enter your password:");
                     var password = Console.ReadLine();
-                    // 1 User
-                    // 2 Admin
-                    // 3 Emloyee
+                    
                     foreach (User user in UserList)
                     {
                         if (username == user._name && password == user._password)
-                        {
-                            if (user._password == admn)
-                            {
-                                return 2;
-                            }
-                            if (user._password == empl)
-                            {
-                                return 3;
-                            }
-                            else
-                            {
-                                return 1;
-                            }
-
+                        { 
                             Console.WriteLine("You have successfully logged in !!!");
+                            if(user.access == Role.Admin)
+                            {
+                                return 10;
+                            }
+                            if (user.access == Role.Employee)
+                            {
+                                return 5;
+                            }
                             Console.ReadLine();
                             corect = true;
                             break;
