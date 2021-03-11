@@ -38,9 +38,8 @@ namespace GymBokingSys
             this.slots.Add(new TimeSlot(true, this.ts8, this.dur));
             this.slots.Add(new TimeSlot(true, this.ts9, this.dur));
         }
-        public void AddSlot(Activity activity, bool availability, int[] startTime, int[] duration)
+        public void AddSlot(bool availability, int[] startTime, int[] duration)
         {
-            this.activity = activity;
             this.slots.Add(new TimeSlot(availability, startTime, duration));
         }
         public void RemoveSlot(int index) 
