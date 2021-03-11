@@ -15,8 +15,10 @@ namespace GymBokingSys
             NewInterface.welcomeMessage();
             User bd = new User(221, "hariet", "blitz");
             User ba = new User(221, "harry", "login");
+            User baa = new User(221, "vera", "login");
             UserList.Add(bd);
             UserList.Add(ba);
+            UserList.Add(baa);
             XMLwriter();
             XMLreader();
 
@@ -26,24 +28,26 @@ namespace GymBokingSys
         {
             //@".\Users.xml"
             System.Xml.Serialization.XmlSerializer reader =
-           new System.Xml.Serialization.XmlSerializer(typeof(User));
-            System.IO.StreamReader file = new System.IO.StreamReader(
-                @"C:\Users\nikla\Documents\Visual_studio_code\C#\GymBokingSys\Users.xml");
-            User ds = (User)reader.Deserialize(file);
-            file.Close();
-
-            Console.WriteLine(ds._name);
+           new System.Xml.Serialization.XmlSerializer(typeof(List<User>));
+            System.IO.StreamReader file = new System.IO.StreamReader( @"C:.\Users.xml");
+            var collect =(List<User>)reader.Deserialize(file);
+           file.Close();
+            foreach(User i in collect)
+            {
+                UserList.Add(i);
+            }
+            
         }
         static void XMLwriter()
         {
-            foreach (User i in UserList)
-            {
-                var b = i;
-                System.Xml.Serialization.XmlSerializer writer = new System.Xml.Serialization.XmlSerializer(typeof(User));
-                var wfile = new System.IO.StreamWriter(@"C:\Users\nikla\Documents\Visual_studio_code\C#\GymBokingSys\Users.xml",true);
-                writer.Serialize(wfile, b);
-                wfile.Close();
-            }
+
+            System.Xml.Serialization.XmlSerializer writer = new System.Xml.Serialization.XmlSerializer(typeof(List<User>));
+            var wfile = new System.IO.StreamWriter(@"C:.\Users.xml", false);
+
+            var b = UserList;
+          
+            writer.Serialize(wfile, b);
+            wfile.Close();
             // Now we can read the serialized book ...  
 
         }
