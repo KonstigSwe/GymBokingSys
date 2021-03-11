@@ -48,6 +48,12 @@ namespace GymBokingSys
             wfile.Close();
             // Now we can read the serialized book ...  
 
+
+            
+
+        }
+        public int LoginAndReg()
+        {
             Login usrLogin = new Login();
 
             int debugg = usrLogin.LoginAndReg();
@@ -68,11 +74,6 @@ namespace GymBokingSys
             }
 
             Console.ReadKey();
-            
-
-        }
-        public int LoginAndReg()
-        {
             var arrUsers = new Users01[]
             {
             new User("a","1",1234),
