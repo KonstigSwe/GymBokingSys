@@ -6,7 +6,6 @@ namespace GymBokingSys
 {
     class Schedule
     {
-        public Activity Activity;
         public List<TimeSlot> slots = new List<TimeSlot>();
 
         private int[] ts1 = { 8, 0 };
@@ -20,16 +19,14 @@ namespace GymBokingSys
         private int[] ts9 = { 16, 0 };
         private int[] dur = { 1, 0 };
 
-        public Schedule(Activity activity)
+        public Schedule()
         {
-            this.Activity = activity;
             this.slots = new List<TimeSlot>();
         }
 
         public void NewScheduleDefault(Activity activity)
         {
             this.slots.Clear();
-            this.Activity = activity;
             this.slots.Add(new TimeSlot(true, this.ts1, this.dur));
             this.slots.Add(new TimeSlot(true, this.ts2, this.dur));
             this.slots.Add(new TimeSlot(true, this.ts3, this.dur));
@@ -58,7 +55,45 @@ namespace GymBokingSys
         }
         public void ShowSchedule()
         {
+            string tempTimeH;
+            string tempTimeM;
+            string tempTimeHdur;
+            string tempTimeMdur;
+            foreach(TimeSlot ts in this.slots)
+            {
+                if (ts._startTime[0]<10)
+                {
+                    tempTimeH = "0" + ts._startTime[0].ToString();
+                } else
+                {
+                    tempTimeH = ts._startTime[0].ToString();
+                }
 
+                if (ts._startTime[1]<10)
+                {
+                    tempTimeM = "0" + ts._startTime[1].ToString();
+                } else
+                {
+                    tempTimeM = ts._startTime[1].ToString();
+                }
+                if (ts._duration[0]<10)
+                {
+                    tempTimeHdur = "0" + ts._duration[0];
+                } else
+                {
+                    tempTimeHdur = ts._duration[0].ToString();
+                }
+                if (ts._duration[1] < 10)
+                {
+                    tempTimeMdur = "0" + ts._duration[1];
+                } else
+                {
+                    tempTimeMdur = ts._duration[1].ToString();
+                }
+                string tempTimeStart = tempTimeH + ":" + tempTimeM;
+                string tempTimeDurat = tempTimeHdur + "h " + tempTimeMdur + "m";
+                Console.WriteLine("Start time: {0}, Duration: {1}\n",tempTimeStart, tempTimeDurat);
+            }
         }
     }
     class TimeSlot
