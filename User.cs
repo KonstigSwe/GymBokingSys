@@ -8,7 +8,7 @@ namespace GymBokingSys
     {
         public Role access;
         private string _Jobtitle { get; set; }
-        public User(int phoneNumber, string name, string password,Role grade ) : base(phoneNumber, name, password)
+        public User(int phoneNumber, string name, string password,Role status ) : base(phoneNumber, name, password)
         {
 
         }
