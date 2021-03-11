@@ -6,6 +6,9 @@ namespace GymBokingSys
     {
         static void Main(string[] args)
         {
+            Interface NewInterface = new Interface();
+            NewInterface.welcomeMessage();
+
             Login usrLogin = new Login();
 
             int debugg = usrLogin.LoginAndReg();
@@ -27,6 +30,7 @@ namespace GymBokingSys
 
             Console.ReadKey();
             
+
         }
     }    
 }
