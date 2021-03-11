@@ -9,20 +9,12 @@ namespace GymBokingSys
         static void Main(string[] args)
         {
 
-
+            XMLreader();
             Interface NewInterface = new Interface();
             NewInterface.welcomeMessage();
-            User bd = new User(221, "hariet", "blitz",Role.User);
-            User ba = new User(221, "harry", "login",Role.User);
-            User baa = new User(221, "vera", "login",Role.User);
-            baa.SetAccessAdmin();
-            bd.SetAccessEmployee();
-            UserList.Add(bd);
-            UserList.Add(ba);
-            UserList.Add(baa);
-            XMLwriter();
-            XMLreader();
-
+            
+            
+            LoginAndReg();
 
         }
         static void XMLreader()
@@ -30,13 +22,13 @@ namespace GymBokingSys
             //@".\Users.xml"
             System.Xml.Serialization.XmlSerializer reader =
            new System.Xml.Serialization.XmlSerializer(typeof(List<User>));
-            System.IO.StreamReader file = new System.IO.StreamReader( @"C:.\Users.xml");
-            var collect =(List<User>)reader.Deserialize(file);
-           file.Close();
-            foreach(User i in collect)
+            System.IO.StreamReader file = new System.IO.StreamReader(@"C:.\Users.xml");
+            var collect = (List<User>)reader.Deserialize(file);
+            file.Close();
+            foreach (User i in collect)
             {
                 UserList.Add(i);
-            } 
+            }
         }
         static void XMLwriter()
         {
@@ -49,44 +41,22 @@ namespace GymBokingSys
             // Now we can read the serialized book ...  
 
 
-            
+
 
         }
-        public int LoginAndReg()
+        static int LoginAndReg()
         {
-            Login usrLogin = new Login();
 
-            int debugg = usrLogin.LoginAndReg();
-
-            Console.WriteLine("===DEBUGG===");
-
-            if (debugg == 1)
-            {
-                Console.WriteLine("user Menu");
-            }
-            if (debugg == 2)
-            {
-                Console.WriteLine("Admin Menu");
-            }
-            else
-            {
-                Console.WriteLine("employee Menu");
-            }
-
-            Console.ReadKey();
-            var arrUsers = new Users01[]
-            {
-            new User("a","1",1234),
-            new User("John","pass2",15),
-            new User("Jane","pass2",32)
-            };
             int run = 1;
             // Admin och anställda bör också lagras på fil
             string admn = "admin";
             string empl = "empl";
+            bool corect = false;
             while (run == 1)
             {
-                Console.WriteLine("For login press 1 or for register 2");
+                Console.WriteLine(" For login press 1 or for register 2");
+     
+                Console.Write(">");
                 var input = Console.ReadLine();
 
                 if (input == "1")
@@ -98,7 +68,7 @@ namespace GymBokingSys
                     // 1 User
                     // 2 Admin
                     // 3 Emloyee
-                    foreach (Users01 user in arrUsers)
+                    foreach (User user in UserList)
                     {
                         if (username == user._name && password == user._password)
                         {
@@ -106,7 +76,7 @@ namespace GymBokingSys
                             {
                                 return 2;
                             }
-                            if (user.password == empl)
+                            if (user._password == empl)
                             {
                                 return 3;
                             }
@@ -117,9 +87,14 @@ namespace GymBokingSys
 
                             Console.WriteLine("You have successfully logged in !!!");
                             Console.ReadLine();
+                            corect = true;
+                            break;
                         }
                     }
-                    Console.WriteLine("Your username or password is incorect, try again !!!");
+                    if (corect == false)
+                    {
+                        Console.WriteLine("Your username or password is incorect, try again !!!");
+                    }
                 }
                 else if (input == "2")
                 {
@@ -128,13 +103,14 @@ namespace GymBokingSys
                     Console.WriteLine("Enter your password:");
                     var password = Console.ReadLine();
                     Console.WriteLine("Enter your PhoneNumber:");
-                    int phoneNumber = int.Parse(Console.ReadLine());
-                    Array.Resize(ref arrUsers, arrUsers.Length + 1);
-                    arrUsers[arrUsers.Length - 1] = new Users01(username, password, phoneNumber);
+                    string phoneNumber = Console.ReadLine();
+                    User us = new User(phoneNumber, username, password, Role.User);
+                    UserList.Add(us);
+                    XMLwriter();
                 }
             }
             return 4;
         }
-    }    
+    }
 }
 
