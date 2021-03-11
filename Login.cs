@@ -1,12 +1,13 @@
 ﻿using System;
-
-
 namespace GymBokingSys
 {
-    class LogReg
+    public class Login
     {
-        
-        public void Login()
+        public Login()
+        {
+        }
+
+        public int LoginAndReg()
         {
             var arrUsers = new Users01[]
             {
@@ -14,16 +15,16 @@ namespace GymBokingSys
             new Users01("John","pass2",15),
             new Users01("Jane","pass2",32)
             };
-        //Skall skrivas till fil
 
-        Start:
-            Console.WriteLine("For login press 1 or for register 2");
-            var input = Console.ReadLine();
+            int run = 1;
+            // Admin och anställda bör också lagras på fil
+            string admn = "admin";
+            string empl = "empl";
 
-            bool successfull = false;
-            //return True
-            while (!successfull)
+            while (run == 1)
             {
+                Console.WriteLine("For login press 1 or for register 2");
+                var input = Console.ReadLine();
 
                 if (input == "1")
                 {
@@ -31,25 +32,37 @@ namespace GymBokingSys
                     var username = Console.ReadLine();
                     Console.WriteLine("Enter your password:");
                     var password = Console.ReadLine();
-
-
+                    // 1 User
+                    // 2 Admin
+                    // 3 Emloyee
                     foreach (Users01 user in arrUsers)
                     {
                         if (username == user._name && password == user._password)
                         {
+                            if (user._password == admn)
+                            {
+                                return 2;
+                            }
+                            if (user.password == empl)
+                            {
+                                return 3;
+                            }
+                            else
+                            {
+                                return 1;
+                            }
+                                
+
                             Console.WriteLine("You have successfully logged in !!!");
                             Console.ReadLine();
-                            successfull = true;
 
-                            break;
+
+                            
                         }
+                        
                     }
 
-                    if (!successfull)
-                    {
-                        Console.WriteLine("Your username or password is incorect, try again !!!");
-                    }
-
+                    Console.WriteLine("Your username or password is incorect, try again !!!");
                 }
 
                 else if (input == "2")
@@ -67,22 +80,17 @@ namespace GymBokingSys
 
                     Array.Resize(ref arrUsers, arrUsers.Length + 1);
                     arrUsers[arrUsers.Length - 1] = new Users01(username, password, phoneNumber);
-                    successfull = true;
-                    // TO DO, Make a Loop not goto                
-                    goto Start;
-                    
-
-                }
-                else
-                {
-                    Console.WriteLine("Try again !!!");
-                    break;
-
+                                       
                 }
 
             }
 
+            
+
+            return 4;
+
+
+
         }
     }
-
 }
