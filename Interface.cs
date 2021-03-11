@@ -23,6 +23,10 @@ namespace GymBokingSys
 
 
         }
+        public void loginMessage()
+        {
+
+        }
         public void writeSchedule()
         {
 
