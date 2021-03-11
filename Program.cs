@@ -9,6 +9,7 @@ namespace GymBokingSys
         static void Main(string[] args)
         {
 
+
             Interface NewInterface = new Interface();
             NewInterface.welcomeMessage();
             User bd = new User(221, "hariet", "blitz",Role.User);
@@ -47,7 +48,30 @@ namespace GymBokingSys
             wfile.Close();
             // Now we can read the serialized book ...  
 
-        }
-    }
+            Login usrLogin = new Login();
 
+            int debugg = usrLogin.LoginAndReg();
+
+            Console.WriteLine("===DEBUGG===");
+
+            if (debugg == 1)
+            {
+                Console.WriteLine("user Menu");
+            }
+            if (debugg == 2)
+            {
+                Console.WriteLine("Admin Menu");
+            }
+            else
+            {
+                Console.WriteLine("employee Menu");
+            }
+
+            Console.ReadKey();
+            
+
+        }
+
+    }    
 }
+

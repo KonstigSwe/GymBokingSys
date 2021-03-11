@@ -6,24 +6,31 @@ namespace GymBokingSys
 {
     class Machine : Activity
     {
-        private string _type;
-        private int _machineID;
-        private bool _status;
+        public string Type { get; private set; }
+        public int MachineID { get; private set; }
+        public bool Status { get; private set; }
+        public List<Machine> machineList = new List<Machine>();
 
-        public string Type
+
+        public Machine(string type, int machineID, bool status)
         {
-            get { return _type; }
-            set { _type = value; }
+            Type = type;
+            MachineID = machineID;
+            Status = status;
         }
-        public int MachineID
+        public void AddMachine()
         {
-            get { return _machineID; }
-            set { _machineID = value; }
+            machineList.Add(new Machine("Treadmill", 1, true));
+            machineList.Add(new Machine("Treadmill", 2, true));
+            machineList.Add(new Machine("Treadmill", 3, true));
+            machineList.Add(new Machine("Treadmill", 4, true));
+            machineList.Add(new Machine("Cycle", 1, true));
+            machineList.Add(new Machine("Cycle", 2, true));
+            machineList.Add(new Machine("Cycle", 3, true));
+            machineList.Add(new Machine("Rowing Machine", 1, true));
+            machineList.Add(new Machine("Rowing Machine", 2, true));
+            machineList.Add(new Machine("Crosstrainer", 1, true));
+            machineList.Add(new Machine("Crosstrainer", 2, true));
         }
-        public bool Status
-        {
-            get { return _status; }
-            set { _status = value; }
-        }
-    }
+    }    
 }
