@@ -111,8 +111,10 @@ namespace GymBokingSys
                             }
                             Console.ReadLine();
                             corect = true;
+                            run = 0;
                             break;
                         }
+                        break;
                     }
                     if (corect == false)
                     {
