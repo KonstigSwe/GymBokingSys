@@ -72,12 +72,8 @@ namespace GymBokingSys
 
         }
         // Function should get parameter to print from object
-        public void ShowStatusMachine()
-        {
-            // should be set when loading program
-            Machine m = new Machine();
-            m.AddMachine();
-            
+        public void ShowStatusMachine(Machine m)
+        {         
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("+---------------------+-----------------+");
             Console.WriteLine("|   Type       |  MachineId |    Status |");
@@ -129,14 +125,10 @@ namespace GymBokingSys
                               "7 - Delete user\n" +
                               "8 - Quit\n");
 
-
             Console.Write(">");
         }
-        public void SetStatusMachine(int mID)
-        {
-            // should be set when loading program
-            Machine m = new Machine();
-            m.AddMachine();
+        public void SetStatusMachine(int mID, Machine m)
+        {         
             foreach (Machine item in m.machineList)
             {
                 if (mID == m.MachineID)
