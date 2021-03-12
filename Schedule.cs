@@ -18,6 +18,8 @@ namespace GymBokingSys
         private int[] ts8 = { 15, 0 };
         private int[] ts9 = { 16, 0 };
         private int[] dur = { 1, 0 };
+        private int maxParticipants = 5;
+        private List<Person> participants = new List<Person>();
 
         public Schedule()
         {
@@ -27,19 +29,19 @@ namespace GymBokingSys
         public void NewScheduleDefault(Activity activity)
         {
             this.slots.Clear();
-            this.slots.Add(new TimeSlot(true, this.ts1, this.dur));
-            this.slots.Add(new TimeSlot(true, this.ts2, this.dur));
-            this.slots.Add(new TimeSlot(true, this.ts3, this.dur));
-            this.slots.Add(new TimeSlot(true, this.ts4, this.dur));
-            this.slots.Add(new TimeSlot(true, this.ts5, this.dur));
-            this.slots.Add(new TimeSlot(true, this.ts6, this.dur));
-            this.slots.Add(new TimeSlot(true, this.ts7, this.dur));
-            this.slots.Add(new TimeSlot(true, this.ts8, this.dur));
-            this.slots.Add(new TimeSlot(true, this.ts9, this.dur));
+            this.slots.Add(new TimeSlot(true, this.ts1, this.dur, this.participants, this.maxParticipants));
+            this.slots.Add(new TimeSlot(true, this.ts2, this.dur, this.participants, this.maxParticipants));
+            this.slots.Add(new TimeSlot(true, this.ts3, this.dur, this.participants, this.maxParticipants));
+            this.slots.Add(new TimeSlot(true, this.ts4, this.dur, this.participants, this.maxParticipants));
+            this.slots.Add(new TimeSlot(true, this.ts5, this.dur, this.participants, this.maxParticipants));
+            this.slots.Add(new TimeSlot(true, this.ts6, this.dur, this.participants, this.maxParticipants));
+            this.slots.Add(new TimeSlot(true, this.ts7, this.dur, this.participants, this.maxParticipants));
+            this.slots.Add(new TimeSlot(true, this.ts8, this.dur, this.participants, this.maxParticipants));
+            this.slots.Add(new TimeSlot(true, this.ts9, this.dur, this.participants, this.maxParticipants));
         }
         public void AddSlot(bool availability, int[] startTime, int[] duration)
         {
-            this.slots.Add(new TimeSlot(availability, startTime, duration));
+            this.slots.Add(new TimeSlot(availability, startTime, duration, this.participants, this.maxParticipants));
         }
         public void RemoveSlot(int index) 
         {
@@ -118,6 +120,14 @@ namespace GymBokingSys
             this._duration  = new int[] { 0, 0 }; // Hours, minutes
             this.participants = new List<Person>();
             this.maxParticipants = 1;
+        }
+        public void AddParticipant(Person participant)
+        {
+            this.participants.Add(participant);
+        }
+        public void RemoveParticipant(Person participant)
+        {
+            this.participants.Remove(participant);
         }
     }
 }
