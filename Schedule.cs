@@ -101,17 +101,23 @@ namespace GymBokingSys
         public bool _available;
         public int[] _startTime = new int[2];
         public int[] _duration = new int[2];
-        public TimeSlot(bool available, int[] startTime, int[] duration)
+        public List<Person> participants;
+        public int maxParticipants;
+        public TimeSlot(bool available, int[] startTime, int[] duration, List<Person> participants, int maxParticipants)
         {
             this._available = available;
             this._startTime = startTime;
             this._duration  = duration;
+            this.participants = participants;
+            this.maxParticipants = maxParticipants;
         }
         public TimeSlot()
         {
             this._available = true;
             this._startTime = new int[] { 8, 0};  // Hours, minutes
             this._duration  = new int[] { 0, 0 }; // Hours, minutes
+            this.participants = new List<Person>();
+            this.maxParticipants = 1;
         }
     }
 }

@@ -16,6 +16,11 @@ namespace GymBokingSys
             this._password = password;
 
         }
-        public Person() { }
+        public Person() 
+        {
+            this._phoneNumber = "";
+            this._name = "";
+            this._password = "";
+        }
     }
 }
