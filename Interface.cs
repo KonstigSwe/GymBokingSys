@@ -69,7 +69,7 @@ namespace GymBokingSys
         }
         public void writeSchedule()
         {
-
+             
         }
         // Function should get parameter to print from object
         public void ShowStatusMachine()
