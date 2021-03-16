@@ -114,7 +114,7 @@ namespace GymBokingSys
                             run = 0;
                             break;
                         }
-                        break;
+                        
                     }
                     if (corect == false)
                     {
